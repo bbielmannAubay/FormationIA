@@ -1,0 +1,5 @@
+{
+  "github.copilot.enable": { "dotenv": false },
+  "files.exclude": {},
+  "search.exclude": { "**/.env": true, "**/.env.*": true }
+}
