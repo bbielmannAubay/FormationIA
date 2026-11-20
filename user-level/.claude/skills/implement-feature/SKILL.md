@@ -12,6 +12,9 @@ Never guess: missing information becomes a question to the user (or a proposal w
 
 Project rules always win (CLAUDE.md, restrictions on which refs/files may be read, etc.): repeat relevant ones in each sub-agent prompt.
 
+## Pre-approved plan mode (used by `/sdd-implement`)
+If the arguments reference an approved spec/plan/task (file paths such as `specs/<slug>/spec.md`, `plan.md` and a task id), read them and use them as the approved plan: **skip steps 1 and 2** (planning and gate were already done and approved) and start at step 3 with that content as the plan, restricted to the given task. In step 5, also pass the spec's "Out of scope" section to the reviewer and ask it to flag anything built beyond the spec. Otherwise (standalone use) follow the steps below unchanged.
+
 ## 1. Plan: `feature-planner` (opus, read-only)
 Prompt: the feature description, target area if known, relevant project rules. If the result has "Open questions", ask the user (AskUserQuestion, recommended default first), then re-run the planner with the answers.
 
